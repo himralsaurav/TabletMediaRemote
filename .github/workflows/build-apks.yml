@@ -14,7 +14,7 @@ jobs:
       - name: Extract project
         run: |
           unzip -q TabletMediaRemote-GitHubBuild.zip
-          ls TabletMediaRemote
+          ls -la TabletMediaRemote
 
       - name: Set up Java
         uses: actions/setup-java@v4
@@ -27,7 +27,7 @@ jobs:
         with:
           gradle-version: '8.9'
 
-            - name: Fix JVM targets
+      - name: Fix JVM targets
         working-directory: TabletMediaRemote
         run: |
           cat >> receiver/build.gradle.kts <<'EOF'
