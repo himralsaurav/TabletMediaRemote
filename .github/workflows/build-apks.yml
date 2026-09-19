@@ -14,8 +14,7 @@ jobs:
       - name: Extract project
         run: |
           unzip -q TabletMediaRemote-GitHubBuild.zip
-          cd TabletMediaRemote
-          ls
+          ls TabletMediaRemote
 
       - name: Set up Java
         uses: actions/setup-java@v4
