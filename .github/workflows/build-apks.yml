@@ -27,6 +27,37 @@ jobs:
         with:
           gradle-version: '8.9'
 
+            - name: Fix JVM targets
+        working-directory: TabletMediaRemote
+        run: |
+          cat >> receiver/build.gradle.kts <<'EOF'
+
+          android {
+              compileOptions {
+                  sourceCompatibility = JavaVersion.VERSION_17
+                  targetCompatibility = JavaVersion.VERSION_17
+              }
+          }
+
+          kotlinOptions {
+              jvmTarget = "17"
+          }
+          EOF
+
+          cat >> remote/build.gradle.kts <<'EOF'
+
+          android {
+              compileOptions {
+                  sourceCompatibility = JavaVersion.VERSION_17
+                  targetCompatibility = JavaVersion.VERSION_17
+              }
+          }
+
+          kotlinOptions {
+              jvmTarget = "17"
+          }
+          EOF
+
       - name: Build APKs
         working-directory: TabletMediaRemote
         run: |
